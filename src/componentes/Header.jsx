@@ -107,7 +107,7 @@ export default function SearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
-            onClick={toggleDrawer('left', true)}
+            onClick={toggleDrawer('left', true)}    
           >
             <MenuIcon />
           </IconButton>
@@ -117,7 +117,7 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+           Sistema
           </Typography>
           <Search>
             <SearchIconWrapper>

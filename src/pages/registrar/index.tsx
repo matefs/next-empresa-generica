@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Grid, TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
+import Avatar from '@mui/material/Avatar'; 
+import CssBaseline from '@mui/material/CssBaseline';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
+
 
 const FormularioCadastro = () => {
   const [formulario, setFormulario] = useState({
@@ -28,17 +38,39 @@ const FormularioCadastro = () => {
 
   return (
 
+   <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Registrar
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
 
 
-    <form onSubmit={handleSubmit}>
-      <TextField
+
+
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+            <TextField
         label="Nome"
         name="nome"
         value={formulario.nome}
         onChange={handleChange}
         fullWidth
       />
+      </Grid>
 
+              <Grid item xs={12}>
       <TextField
         label="Email"
         name="email"
@@ -46,7 +78,9 @@ const FormularioCadastro = () => {
         onChange={handleChange}
         fullWidth
       />
+      </Grid>
 
+              <Grid item xs={12}>
       <TextField
         label="CPF"
         name="cpf"
@@ -54,16 +88,23 @@ const FormularioCadastro = () => {
         onChange={handleChange}
         fullWidth
       />
+      </Grid>
 
+
+              <Grid item xs={12}>
       <TextField
-        label="Data de nascimento"
+        label=""
         name="dataNascimento"
         value={formulario.dataNascimento}
         onChange={handleChange}
         type="date"
         fullWidth
       />
+      </Grid>
 
+
+              <Grid item xs={12}>
+                <Typography>Sexo</Typography>
       <RadioGroup
         aria-label="sexo"
         name="sexo"
@@ -80,9 +121,12 @@ const FormularioCadastro = () => {
           control={<Radio />}
           label="Feminino"
         />
-
+ 
       </RadioGroup>
+</Grid>
 
+
+              <Grid item xs={12}> 
       <TextField
         label="Cidade"
         name="cidade"
@@ -90,43 +134,49 @@ const FormularioCadastro = () => {
         onChange={handleChange}
         fullWidth
       />
+</Grid>
 
-      <Select
-        label="Estado"
+              <Grid item xs={12}> 
+ <Typography>Estado</Typography>
+      <Select 
         name="estado"
         value={formulario.estado}
         onChange={handleChange}
-        fullWidth
+        fullWidth 
       >
-        <MenuItem value="">Selecione o estado</MenuItem>
-        <MenuItem value="AC">Acre</MenuItem>
-        <MenuItem value="AL">Alagoas</MenuItem>
-        <MenuItem value="AP">Amapá</MenuItem>
-        <MenuItem value="AM">Amazonas</MenuItem>
-        <MenuItem value="BA">Bahia</MenuItem>
-        <MenuItem value="CE">Ceará</MenuItem>
-        <MenuItem value="DF">Distrito Federal</MenuItem>
-        <MenuItem value="ES">Espírito Santo</MenuItem>
-<MenuItem value="GO">Goiás</MenuItem>
-<MenuItem value="MA">Maranhão</MenuItem>
-<MenuItem value="MT">Mato Grosso</MenuItem>
-<MenuItem value="MS">Mato Grosso do Sul</MenuItem>
-<MenuItem value="MG">Minas Gerais</MenuItem>
-<MenuItem value="PA">Pará</MenuItem>
-<MenuItem value="PB">Paraíba</MenuItem>
-<MenuItem value="PR">Paraná</MenuItem>
-<MenuItem value="PE">Pernambuco</MenuItem>
-<MenuItem value="PI">Piauí</MenuItem>
-<MenuItem value="RJ">Rio de Janeiro</MenuItem>
-<MenuItem value="RN">Rio Grande do Norte</MenuItem>
-<MenuItem value="RS">Rio Grande do Sul</MenuItem>
-<MenuItem value="RO">Rondônia</MenuItem>
-<MenuItem value="RR">Roraima</MenuItem>
-<MenuItem value="SC">Santa Catarina</MenuItem>
-<MenuItem value="SP">São Paulo</MenuItem>
-<MenuItem value="SE">Sergipe</MenuItem>
-<MenuItem value="TO">Tocantins</MenuItem>
+<MenuItem key={1} value="">Selecione o estado</MenuItem>
+<MenuItem key={2} value="AC">Acre</MenuItem>
+<MenuItem key={3} value="AL">Alagoas</MenuItem>
+<MenuItem key={4} value="AP">Amapá</MenuItem>
+<MenuItem key={5} value="AM">Amazonas</MenuItem>
+<MenuItem key={6} value="BA">Bahia</MenuItem>
+<MenuItem key={7} value="CE">Ceará</MenuItem>
+<MenuItem key={8} value="DF">Distrito Federal</MenuItem>
+<MenuItem key={9} value="ES">Espírito Santo</MenuItem>
+<MenuItem key={10} value="GO">Goiás</MenuItem>
+<MenuItem key={11} value="MA">Maranhão</MenuItem>
+<MenuItem key={12} value="MT">Mato Grosso</MenuItem>
+<MenuItem key={13} value="MS">Mato Grosso do Sul</MenuItem>
+<MenuItem key={14} value="MG">Minas Gerais</MenuItem>
+<MenuItem key={15} value="PA">Pará</MenuItem>
+<MenuItem key={16} value="PB">Paraíba</MenuItem>
+<MenuItem key={17} value="PR">Paraná</MenuItem>
+<MenuItem key={18} value="PE">Pernambuco</MenuItem>
+<MenuItem key={19} value="PI">Piauí</MenuItem>
+<MenuItem key={20} value="RJ">Rio de Janeiro</MenuItem>
+<MenuItem key={11} value="RN">Rio Grande do Norte</MenuItem>
+<MenuItem key={22} value="RS">Rio Grande do Sul</MenuItem>
+<MenuItem key={23} value="RO">Rondônia</MenuItem>
+<MenuItem key={24} value="RR">Roraima</MenuItem>
+<MenuItem key={25} value="SC">Santa Catarina</MenuItem>
+<MenuItem key={26} value="SP">São Paulo</MenuItem>
+<MenuItem key={27} value="SE">Sergipe</MenuItem>
+<MenuItem key={28} value="TO">Tocantins</MenuItem>
 </Select>
+</Grid>
+
+
+              <Grid item xs={12}> 
   <TextField
     label="Senha"
     name="senha"
@@ -135,7 +185,10 @@ const FormularioCadastro = () => {
     onChange={handleChange}
     fullWidth
   />
+        </Grid>
 
+
+              <Grid item xs={12}> 
   <TextField
     label="Confirmar senha"
     name="confirmarSenha"
@@ -144,12 +197,38 @@ const FormularioCadastro = () => {
     onChange={handleChange}
     fullWidth
   />
-
-  <Button type="submit" variant="contained" color="primary">
-    Enviar
-  </Button>
-</form>
+        </Grid>
  
+
+</Grid>
+
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="Quero receber promoções de marketing e atualizações por e-mail."
+                />
+              </Grid>
+
+
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Registrar-se
+            </Button>
+            <Grid container justifyContent="flex-end" sx={{mb:2 }}>
+              <Grid item>
+                <Link href="#" variant="body2">
+                     Já tem uma conta? Entrar 
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box> 
+      </Container>
 
 );
 };

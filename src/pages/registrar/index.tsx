@@ -24,14 +24,19 @@ const FormularioCadastro = () => {
     confirmarSenha: ""
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
+/*     console.log(e.target.value.slice(0,-1))
+    if (e.target.value.toString().length <= 11) {
+      setFormulario(e.target.value.slice(0,-1));
+    } 
+ */
     setFormulario({
       ...formulario,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(formulario);
   };
@@ -87,6 +92,7 @@ const FormularioCadastro = () => {
         value={formulario.cpf}
         onChange={handleChange}
         fullWidth
+        type='number' 
       />
       </Grid>
 

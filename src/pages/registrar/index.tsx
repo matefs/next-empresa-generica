@@ -42,7 +42,7 @@ const FormularioCadastro = () => {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -202,7 +202,7 @@ const FormularioCadastro = () => {
 
 </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{p:1}}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="Quero receber promoções de marketing e atualizações por e-mail."

@@ -228,7 +228,7 @@ const FormularioCadastro = () => {
             </Button>
             <Grid container justifyContent="flex-end" sx={{mb:2 }}>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" variant="body2">
                      Já tem uma conta? Entrar 
                 </Link>
               </Grid>

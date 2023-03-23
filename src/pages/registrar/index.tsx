@@ -132,15 +132,6 @@ const FormularioCadastro = () => {
 </Grid>
 
 
-              <Grid item xs={12}> 
-      <TextField
-        label="Cidade"
-        name="cidade"
-        value={formulario.cidade}
-        onChange={handleChange}
-        fullWidth
-      />
-</Grid>
 
               <Grid item xs={12}> 
  <Typography>Estado</Typography>
@@ -181,6 +172,16 @@ const FormularioCadastro = () => {
 </Select>
 </Grid>
 
+
+              <Grid item xs={12}> 
+      <TextField
+        label="Cidade"
+        name="cidade"
+        value={formulario.cidade}
+        onChange={handleChange}
+        fullWidth
+      />
+</Grid>
 
               <Grid item xs={12}> 
   <TextField

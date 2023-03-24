@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
-
+import CpfInput from './CpfInput'
 
 const FormularioCadastro = () => {
   const [formulario, setFormulario] = useState({
@@ -30,6 +30,8 @@ const FormularioCadastro = () => {
       setFormulario(e.target.value.slice(0,-1));
     } 
  */
+
+    console.log(e)
     setFormulario({
       ...formulario,
       [e.target.name]: e.target.value
@@ -86,14 +88,7 @@ const FormularioCadastro = () => {
       </Grid>
 
               <Grid item xs={12}>
-      <TextField
-        label="CPF"
-        name="cpf"
-        value={formulario.cpf}
-        onChange={handleChange}
-        fullWidth
-        type='number' 
-      />
+<CpfInput />
       </Grid>
 
 
@@ -180,6 +175,7 @@ const FormularioCadastro = () => {
         value={formulario.cidade}
         onChange={handleChange}
         fullWidth
+        required
       />
 </Grid>
 
@@ -191,6 +187,7 @@ const FormularioCadastro = () => {
     value={formulario.senha}
     onChange={handleChange}
     fullWidth
+    required
   />
         </Grid>
 
@@ -203,6 +200,7 @@ const FormularioCadastro = () => {
     value={formulario.confirmarSenha}
     onChange={handleChange}
     fullWidth
+    required
   />
         </Grid>
  

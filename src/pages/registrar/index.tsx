@@ -94,6 +94,7 @@ const FormularioCadastro = () => {
 
               <Grid item xs={12}>
       <TextField
+        required
         label=""
         name="dataNascimento"
         value={formulario.dataNascimento}
@@ -131,6 +132,7 @@ const FormularioCadastro = () => {
               <Grid item xs={12}> 
  <Typography>Estado</Typography>
       <Select 
+        required
         name="estado"
         value={formulario.estado}
         onChange={handleChange}
@@ -183,11 +185,11 @@ const FormularioCadastro = () => {
   <TextField
     label="Senha"
     name="senha"
+    required
     type="password"
     value={formulario.senha}
     onChange={handleChange}
     fullWidth
-    required
   />
         </Grid>
 

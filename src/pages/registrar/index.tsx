@@ -70,6 +70,7 @@ const FormularioCadastro = () => {
               <Grid item xs={12}>
             <TextField
         label="Nome"
+        required
         name="nome"
         value={formulario.nome}
         onChange={handleChange}
@@ -80,6 +81,7 @@ const FormularioCadastro = () => {
               <Grid item xs={12}>
       <TextField
         label="Email"
+        required
         name="email"
         value={formulario.email}
         onChange={handleChange}

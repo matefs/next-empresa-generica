@@ -11,7 +11,7 @@ function formatCPF(cpf) {
 
 function CPFInput() {
   const [cpf, setCPF] = useState("");
-
+ 
   function handleChange(event) {
     const newCPF = event.target.value;
     setCPF(formatCPF(newCPF));

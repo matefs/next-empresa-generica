@@ -12,17 +12,28 @@ import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuIte
 import CpfInput from './CpfInput'
 
 const FormularioCadastro = () => {
-  const [formulario, setFormulario] = useState({
-    nome: "",
-    email: "",
-    cpf: "",
-    dataNascimento: "",
-    sexo: "",
-    cidade: "",
-    estado: "",
-    senha: "",
-    confirmarSenha: ""
-  });
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  //const [cpf, setCpf] = useState("");
+  const [dataNascimento, setDataNascimento] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [estado, setEstado] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+
+
+const formulario = {
+      nome,
+      email, 
+      dataNascimento,
+      sexo,
+      cidade,
+      estado,
+      senha,
+      confirmarSenha,
+    };
+
 
   const handleChange = (e: any) => {
 /*     console.log(e.target.value.slice(0,-1))
@@ -31,16 +42,17 @@ const FormularioCadastro = () => {
     } 
  */
 
-    console.log(e)
-    setFormulario({
-      ...formulario,
-      [e.target.name]: e.target.value
-    });
+    //console.log(e)
+ 
   };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(formulario);
+    console.log(CpfInput.mostraValorCpf())
+    for( let i in formulario ) { 
+      console.log(formulario[`${i}`])
+    }
+    //console.log(formulario);
   };
 
   return (
@@ -72,8 +84,8 @@ const FormularioCadastro = () => {
         label="Nome"
         required
         name="nome"
-        value={formulario.nome}
-        onChange={handleChange}
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
         fullWidth
       />
       </Grid>
@@ -83,8 +95,8 @@ const FormularioCadastro = () => {
         label="Email"
         required
         name="email"
-        value={formulario.email}
-        onChange={handleChange}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         fullWidth
       />
       </Grid>
@@ -99,8 +111,8 @@ const FormularioCadastro = () => {
         required
         label=""
         name="dataNascimento"
-        value={formulario.dataNascimento}
-        onChange={handleChange}
+        value={dataNascimento}
+        onChange={(e) => setDataNascimento(e.target.value)}
         type="date"
         fullWidth
       />
@@ -112,8 +124,8 @@ const FormularioCadastro = () => {
       <RadioGroup
         aria-label="sexo"
         name="sexo"
-        value={formulario.sexo}
-        onChange={handleChange}
+        value={sexo}
+        onChange={(e) => setSexo(e.target.value)}
       >
         <FormControlLabel
           value="masculino"
@@ -136,8 +148,8 @@ const FormularioCadastro = () => {
       <Select 
         required
         name="estado"
-        value={formulario.estado}
-        onChange={handleChange}
+        value={estado}
+        onChange={(e) => setEstado(e.target.value)}
         fullWidth 
       >
 <MenuItem key={1} value="">Selecione o estado</MenuItem>
@@ -176,8 +188,8 @@ const FormularioCadastro = () => {
       <TextField
         label="Cidade"
         name="cidade"
-        value={formulario.cidade}
-        onChange={handleChange}
+        value={cidade}
+        onChange={(e) => setCidade(e.target.value)}
         fullWidth
         required
       />
@@ -189,8 +201,8 @@ const FormularioCadastro = () => {
     name="senha"
     required
     type="password"
-    value={formulario.senha}
-    onChange={handleChange}
+    value={senha}
+    onChange={(e) => setSenha(e.target.value)}
     fullWidth
   />
         </Grid>
@@ -201,8 +213,8 @@ const FormularioCadastro = () => {
     label="Confirmar senha"
     name="confirmarSenha"
     type="password"
-    value={formulario.confirmarSenha}
-    onChange={handleChange}
+    value={confirmarSenha}
+    onChange={(e) => setConfirmarSenha(e.target.value)}
     fullWidth
     required
   />

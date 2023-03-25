@@ -23,7 +23,7 @@ const FormularioCadastro = () => {
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
 
-const formulario = {
+const formulario: any = {
       nome,
       email, 
       dataNascimento,
@@ -48,7 +48,7 @@ const formulario = {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(CpfInput.mostraValorCpf())
+ /*    console.log(CpfInput.mostraValorCpf()) */
     for( let i in formulario ) { 
       console.log(formulario[`${i}`])
     }

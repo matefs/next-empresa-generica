@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
 import CpfInput from './CpfInput'
 
+
 const FormularioCadastro = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -67,8 +68,8 @@ const formulario: any = {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h5">
             Registrar
@@ -114,6 +115,7 @@ const formulario: any = {
         value={dataNascimento}
         onChange={(e) => setDataNascimento(e.target.value)}
         type="date"
+        placeholder="dd//mm/aaaa"
         fullWidth
       />
       </Grid>

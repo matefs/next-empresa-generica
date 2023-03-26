@@ -18,7 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+import Head from "next/head";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -74,6 +74,16 @@ export default function SearchAppBar() {
 
 
     const list = (anchor) => (
+      <>
+ 
+      <Head>
+        <title>Aplicação PRO 1.0</title>
+        <meta name="description" content="Aplicação profissional" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        
+      </Head>
+
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
@@ -93,11 +103,13 @@ export default function SearchAppBar() {
         ))}
       </List>
     </Box>
+    </>
   );
 
   
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{backgroundColor: 'black'}}>
         <Toolbar>
@@ -108,7 +120,7 @@ export default function SearchAppBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
             onClick={toggleDrawer('left', true)}    
-          >
+            >
             <MenuIcon />
           </IconButton>
           <Typography
@@ -116,7 +128,7 @@ export default function SearchAppBar() {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
+            >
             Sistema
           </Typography>
           <Search>
@@ -126,7 +138,7 @@ export default function SearchAppBar() {
             <StyledInputBase
               placeholder="Pesquisar..."
               inputProps={{ 'aria-label': 'search' }}
-            />
+              />
           </Search>
 
 
@@ -137,7 +149,7 @@ export default function SearchAppBar() {
             open={state['left']}
             onClose={toggleDrawer('left', false)}
             onOpen={toggleDrawer('left', true)}
-          >
+            >
             {list('left')}
           </SwipeableDrawer>
 
@@ -146,6 +158,7 @@ export default function SearchAppBar() {
         </Toolbar>
       </AppBar>
     </Box>
+            </>
   );
 }
 

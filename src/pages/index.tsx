@@ -234,7 +234,7 @@ function Login() {
                 </Grid>
                 <Grid item>
                   <Link href="/registrar" variant="body2">
-                    {"Não tem uma conta ? Cadastre-se"}
+                    {"Não tem uma conta? Cadastre-se"}
                   </Link>
                 </Grid>
               </Grid>

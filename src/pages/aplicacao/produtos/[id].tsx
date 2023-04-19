@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function MyComponent() { 
@@ -25,7 +26,7 @@ function MyComponent() {
       <h1>Hello </h1>
       
       { Object.keys(produtoIndividual).length > 1  ? JSON.stringify(produtoIndividual) :
-       "Carergando..." 
+        <CircularProgress />
        }
       
 

@@ -98,7 +98,10 @@ export default function SearchAppBar() {
     >
       <List>
         {['Produtos', 'Postagens', 'Usuários'].map((text, index) => (
-          <ListItem key={text} disablePadding onClick={ text == 'Produtos' ? () => { router.push('/aplicacao/produtos')}: undefined} >
+          <ListItem key={text} disablePadding onClick={ 
+            text == 'Produtos' ? () => { router.push('/aplicacao/produtos')} : 
+            text == 'Postagens'? () => {router.push('/aplicacao/postagens')} : undefined
+          } >
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

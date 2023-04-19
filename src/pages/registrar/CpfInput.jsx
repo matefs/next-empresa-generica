@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 
+
 function formatCPF(cpf) {
   cpf = cpf.replace(/\D/g, ""); // remove tudo que não é dígito
-  console.log(cpf)
+  //console.log(cpf)
   // cpf = cpf.padStart(11, "0"); // completa com zeros à esquerda até ter 11 dígitos
   cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"); // adiciona pontos e hífen
   return cpf;
 }
 
+export var valorPublicoCPF; 
+
 function CPFInput() {
+
   const [cpf, setCPF] = useState("");
  
   function handleChange(event) {
     const newCPF = event.target.value;
     setCPF(formatCPF(newCPF));
+    valorPublicoCPF = newCPF;
+    console.log(valorPublicoCPF)
+
   }
 
   return (

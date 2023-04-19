@@ -4,9 +4,10 @@ var urlApiLogin = "https://dummyjson.com/auth/login";
 import Head from "next/head";
 /* import styles from "@/styles/Home.module.css"; */
 
+import { useRouter } from 'next/router';
+
 import { useContext } from "react";
 import ContextoDaAplicacao from "../../ContextoDaAplicacao.js";
-import { useRouter } from 'next/router';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';

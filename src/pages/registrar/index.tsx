@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
 import CpfInput from './CpfInput'
-
+import { valorPublicoCPF } from "./CpfInput";
 
 const FormularioCadastro = () => {
   const [nome, setNome] = useState("");
@@ -49,6 +49,7 @@ const formulario: any = {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    console.log(valorPublicoCPF)
  /*    console.log(CpfInput.mostraValorCpf()) */
     for( let i in formulario ) { 
       console.log(formulario[`${i}`])

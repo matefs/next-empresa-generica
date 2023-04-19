@@ -20,6 +20,9 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Head from "next/head";
 
+import {useRouter} from 'next/router';
+
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -64,9 +67,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+    const router = useRouter();
+
+
     const [state, setState] = React.useState({ 
     left: false, 
-  });
+    });
 
     const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
@@ -92,7 +98,7 @@ export default function SearchAppBar() {
     >
       <List>
         {['Produtos', 'Postagens', 'Usuários'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={text} disablePadding onClick={ text == 'Produtos' ? () => { router.push('/aplicacao/produtos')}: undefined} >
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -106,7 +112,7 @@ export default function SearchAppBar() {
     </>
   );
 
-  
+
 
   return (
     <>
@@ -123,6 +129,7 @@ export default function SearchAppBar() {
             >
             <MenuIcon />
           </IconButton>
+
           <Typography
             variant="h6"
             noWrap
@@ -131,6 +138,7 @@ export default function SearchAppBar() {
             >
             Sistema
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -142,8 +150,6 @@ export default function SearchAppBar() {
           </Search>
 
 
-
-        
           <SwipeableDrawer
             anchor={'left'}
             open={state['left']}

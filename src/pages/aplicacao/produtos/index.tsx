@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../../componentes/Header'
+import axios from 'axios'
+import { useState } from 'react';
 
 const Produtos = () => {
+  const [ listaProdutos, setListaProdutos ] = useState([])
+
+  useEffect( () => {
+    axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
+    .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
+  }, [])
+
   return (
     <>
     <Header />
     <div>
       <h2>Produtos</h2>
       <p>Here is a list of our products:</p>
-      <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
-      </ul>
+
+      { listaProdutos.length < 1 ? "Carregando..." : listaProdutos.map((item,index) => ( 
+        <p key={item.id} onClick={() => console.log(item.id)}>{item.nome}</p>
+      )) }
+
     </div>
     </>
   );

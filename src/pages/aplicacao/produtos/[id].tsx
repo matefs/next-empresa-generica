@@ -21,13 +21,20 @@ function ProdutoIndividualComponente() {
   const { id }  = router.query 
 
  const [produtoIndividual, setProdutoIndividual] = useState<Produto>({ id: 0, nome: '', preco: 0, quantidade: 0 , imagem: ''}); 
- 
-  
+ const [isEditing, setIsEditing] = useState(false)
+ const [ isLoading, setIsLoading ] = useState(true) 
+
   useEffect(() => { 
     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
-     .then(respostaItem => setProdutoIndividual(respostaItem.data)) 
-     .catch( (e) => alert("Ocorreu um erro \n" + e))
-     : undefined 
+     .then( (respostaItem) =>  {
+      setProdutoIndividual(respostaItem.data)
+      setIsLoading(false)
+    }) 
+
+     .catch( (e) => {
+      alert("Ocorreu um erro \n" + e)
+      router.push('/aplicacao/produtos');
+     }) : undefined 
  
     }, [id])
 
@@ -43,11 +50,11 @@ function ProdutoIndividualComponente() {
 >
 
  
-      { produtoIndividual.nome != ''  ? 
+      { isLoading == false && isEditing == false ? 
 
-<Card sx={{ maxWidth: 545 }}>
+<Card sx={{  width:300, maxWidth: 745 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 260, maxHeight: 500 }}
         image={produtoIndividual.imagem}
       />
       <CardContent>
@@ -70,10 +77,13 @@ function ProdutoIndividualComponente() {
 
       </CardContent>
       <CardActions>
-        <Button size="small">Editar</Button>
-        <Button size="small">Salvar</Button>
+        <Button size="small" onClick={() => setIsEditing(true)}>Editar</Button>
+        <Button size="small" color='error'>Deletar</Button>
       </CardActions>
-</Card> : <CircularProgress /> }
+</Card> 
+      : isEditing == true ?  "Editando " :  
+
+        <CircularProgress /> }
       
       </Grid>
 

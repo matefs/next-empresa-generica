@@ -4,10 +4,11 @@ import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { Produto } from '../types/types'
 
 const Produtos = () => {
   const router = useRouter();
-  const [ listaProdutos, setListaProdutos ] = useState([])
+  const [ listaProdutos, setListaProdutos ] = useState<Produto[]>([])
 
   useEffect( () => {
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
@@ -20,7 +21,7 @@ const Produtos = () => {
     <Header />
     <div>
       <h2>Produtos</h2>
-      <p>Here is a list of our products:</p>
+      <p>Aqui está sua lista de produtos:</p>
 
       { listaProdutos.length < 1 ? "Carregando..." : listaProdutos.map((item,index) => ( 
         <p key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</p>

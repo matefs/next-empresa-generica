@@ -19,7 +19,7 @@ function MyComponent() {
   const [ produtoIndividual, setProdutoIndividual] = useState({})
 
   
-  useEffect(()=> { 
+  useEffect(() => { 
     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
      .then(respostaItem => setProdutoIndividual(respostaItem.data)) 
      .catch( (e) => alert("Ocorreu um erro \n" + e))

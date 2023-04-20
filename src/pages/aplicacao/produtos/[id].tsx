@@ -20,8 +20,8 @@ function ProdutoIndividualComponente() {
   const router = useRouter()
   const { id }  = router.query 
 
- const [produtoIndividual, setProdutoIndividual] = useState<Produto>({ id: 0, nome: '', preco: 0 });
-
+ const [produtoIndividual, setProdutoIndividual] = useState<Produto>({ id: 0, nome: '', preco: 0, quantidade: 0 , imagem: ''}); 
+ 
   
   useEffect(() => { 
     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
@@ -43,13 +43,12 @@ function ProdutoIndividualComponente() {
 >
 
  
-      { Object.keys(produtoIndividual).length > 1  ? 
+      { produtoIndividual.nome != ''  ? 
 
-<Card sx={{ maxWidth: 345 }}>
+<Card sx={{ maxWidth: 545 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        image={produtoIndividual.imagem}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -62,6 +61,10 @@ function ProdutoIndividualComponente() {
 
         <Typography variant="body2" color="text.secondary">
           R$ {produtoIndividual.preco}  
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary">
+          Quantidade: {produtoIndividual.quantidade}  
         </Typography>
         
 

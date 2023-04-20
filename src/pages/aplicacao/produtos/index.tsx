@@ -2,13 +2,17 @@ import React, { useEffect } from 'react';
 import Header from '../../../componentes/Header'
 import axios from 'axios'
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 const Produtos = () => {
+  const router = useRouter();
   const [ listaProdutos, setListaProdutos ] = useState([])
 
   useEffect( () => {
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
     .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
+
   }, [])
 
   return (
@@ -19,7 +23,7 @@ const Produtos = () => {
       <p>Here is a list of our products:</p>
 
       { listaProdutos.length < 1 ? "Carregando..." : listaProdutos.map((item,index) => ( 
-        <p key={item.id} onClick={() => console.log(item.id)}>{item.nome}</p>
+        <p key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</p>
       )) }
 
     </div>

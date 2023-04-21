@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Container, Typography, Button } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { Produto } from '../types/types'
 
@@ -22,8 +23,12 @@ const Produtos = () => {
     <Header />
     <div> 
 
-      { listaProdutos.length < 1 ? "Carregando..." : listaProdutos.map((item,index) => ( 
+      { listaProdutos.length < 1 ? 
+      <CircularProgress /> : 
+      listaProdutos.map((item,index) => ( 
+
         <p key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</p>
+      
       )) }
 
         <Box

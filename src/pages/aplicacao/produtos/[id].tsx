@@ -83,7 +83,7 @@ function ProdutoIndividualComponente() {
 </Card> 
       : isEditing == true ?  "Editando " :  
 
-        <CircularProgress style={{width: '10%', marginTop:'10%', position: 'fixed'}}/> }
+        <CircularProgress style={{width: '10%', position: 'fixed'}}/> }
       
       </Grid>
 

@@ -108,6 +108,7 @@ function ProdutoIndividualComponente() {
           name="id" 
           value={produtoIndividual.id}  
           margin="normal"
+          disabled={true}
         />
 
         <TextField

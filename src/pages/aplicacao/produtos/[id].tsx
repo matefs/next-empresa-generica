@@ -146,7 +146,7 @@ function ProdutoIndividualComponente() {
           Cadastrar
         </Button>
 
-        <Button type="submit" variant="outlined" style={{marginTop:'5%'}}>
+        <Button type="submit" variant="outlined" style={{marginTop:'5%'}} onClick={() => setIsEditing(false)}>
          Cancelar 
         </Button>
 

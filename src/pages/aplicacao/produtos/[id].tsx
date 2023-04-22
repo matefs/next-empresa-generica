@@ -26,8 +26,8 @@ function ProdutoIndividualComponente() {
 
   const [formData, setFormData] = useState({ 
     nome: '',
-    preco: '',
-    quantidade: '',
+    preco: 0,
+    quantidade: 0,
     imagem: ''
   });
 
@@ -40,6 +40,8 @@ function ProdutoIndividualComponente() {
     event.preventDefault();
     console.log(formData); 
   };
+
+
 
 
   useEffect(() => { 
@@ -56,6 +58,17 @@ function ProdutoIndividualComponente() {
  
     }, [id])
 
+
+  useEffect(() => {
+    setFormData({
+    nome: produtoIndividual.nome,
+    preco: produtoIndividual.preco,
+    quantidade: produtoIndividual.quantidade,
+    imagem: produtoIndividual.imagem
+  });
+  },[isEditing])
+
+
   return (
 <Grid
   container
@@ -65,15 +78,16 @@ function ProdutoIndividualComponente() {
   justifyContent="center"
   style={{ minHeight: '100vh', backgroundColor: '#222f3e'}}
 >
-
  
       { isLoading == false && isEditing == false ? 
 
 <Card sx={{  width:300, maxWidth: 745 }}>
+
       <CardMedia
-        sx={{ height: 260, maxHeight: 500 }}
+        sx={{ height: 260, maxHeight: 700 }}
         image={produtoIndividual.imagem}
       />
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {produtoIndividual.nome} 
@@ -90,13 +104,14 @@ function ProdutoIndividualComponente() {
         <Typography variant="body2" color="text.secondary">
           Quantidade: {produtoIndividual.quantidade}  
         </Typography>
-        
 
       </CardContent>
+      
       <CardActions>
         <Button size="small" onClick={() => setIsEditing(true)}>Editar</Button>
         <Button size="small" color='error'>Deletar</Button>
       </CardActions>
+
 </Card> 
       : isEditing == true ?  
       
@@ -143,7 +158,7 @@ function ProdutoIndividualComponente() {
           margin="normal"
         />
 
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" style={{marginTop:'5%'}}>
           Cadastrar
         </Button>
 

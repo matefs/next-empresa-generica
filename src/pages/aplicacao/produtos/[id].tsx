@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
-
+import { TextField, Box } from '@mui/material'
 
 import { Produto } from '../types/types'
 
@@ -23,6 +23,24 @@ function ProdutoIndividualComponente() {
  const [produtoIndividual, setProdutoIndividual] = useState<Produto>({ id: 0, nome: '', preco: 0, quantidade: 0 , imagem: ''}); 
  const [isEditing, setIsEditing] = useState(false)
  const [ isLoading, setIsLoading ] = useState(true) 
+
+  const [formData, setFormData] = useState({ 
+    nome: '',
+    preco: '',
+    quantidade: '',
+    imagem: ''
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData); 
+  };
+
 
   useEffect(() => { 
     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
@@ -39,7 +57,6 @@ function ProdutoIndividualComponente() {
     }, [id])
 
   return (
-    <div>
 <Grid
   container
   spacing={0}
@@ -62,7 +79,7 @@ function ProdutoIndividualComponente() {
           {produtoIndividual.nome} 
         </Typography>
 
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" >
           Id: {produtoIndividual.id}
         </Typography>
 
@@ -81,13 +98,60 @@ function ProdutoIndividualComponente() {
         <Button size="small" color='error'>Deletar</Button>
       </CardActions>
 </Card> 
-      : isEditing == true ?  "Editando " :  
+      : isEditing == true ?  
+      
+      <form onSubmit={handleSubmit}>
+      <Box display="flex" flexDirection="column" sx={{backgroundColor: 'white', padding:4}}>
 
-        <CircularProgress style={{width: '10%', position: 'fixed'}}/> }
+        <Typography >Edite o cadastro do produto: </Typography>
+        <TextField
+          name="id" 
+          value={produtoIndividual.id}  
+          margin="normal"
+        />
+
+        <TextField
+          name="nome"
+          label="Nome"
+          value={formData.nome}
+          onChange={handleChange}
+          margin="normal"
+        />
+
+        <TextField
+          name="preco"
+          label="Preço"
+          value={formData.preco}
+          onChange={handleChange}
+          margin="normal"
+        />
+
+        <TextField
+          name="quantidade"
+          label="Quantidade"
+          value={formData.quantidade}
+          onChange={handleChange}
+          margin="normal"
+        />
+
+        <TextField
+          name="imagem"
+          label="Imagem"
+          value={formData.imagem}
+          onChange={handleChange}
+          margin="normal"
+        />
+
+        <Button type="submit" variant="contained" color="primary">
+          Cadastrar
+        </Button>
+      </Box>
+    </form>
+
+      :   <CircularProgress style={{width: '10%', position: 'fixed'}}/> }
       
       </Grid>
 
-    </div>
   );
 }
  

@@ -145,6 +145,11 @@ function ProdutoIndividualComponente() {
         <Button type="submit" variant="contained" color="primary">
           Cadastrar
         </Button>
+
+        <Button type="submit" variant="outlined" style={{marginTop:'5%'}}>
+         Cancelar 
+        </Button>
+
       </Box>
     </form>
 

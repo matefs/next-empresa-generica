@@ -101,7 +101,7 @@ function ProdutoIndividualComponente() {
       : isEditing == true ?  
       
       <form onSubmit={handleSubmit}>
-      <Box display="flex" flexDirection="column" sx={{backgroundColor: 'white', padding:4}}>
+      <Box display="flex" flexDirection="column" sx={{backgroundColor: 'white', padding:4, borderRadius: 2}}>
 
         <Typography >Edite o cadastro do produto: </Typography>
         <TextField

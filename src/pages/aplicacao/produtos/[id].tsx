@@ -160,7 +160,7 @@ function ProdutoIndividualComponente() {
 
 
         <Button type="submit" variant="contained" color="primary" style={{marginTop:'5%'}}>
-          Cadastrar
+         Salvar 
         </Button>
 
         <Button type="submit" variant="outlined" style={{marginTop:'5%'}} onClick={() => setIsEditing(false)}>

@@ -10,7 +10,6 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -21,7 +20,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import Head from "next/head";
 
 import {useRouter} from 'next/router';
-
+import { useState } from 'react'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -66,9 +65,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
-    const router = useRouter();
 
+export default function SearchAppBar() {
+  const router = useRouter();
+  const [ valorBarraPesquisa, setValorBarraPesquisa ] = useState('');
+  
 
     const [state, setState] = React.useState({ 
     left: false, 
@@ -150,6 +151,9 @@ export default function SearchAppBar() {
             <StyledInputBase
               placeholder="Pesquisar..."
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e) => {
+                setValorBarraPesquisa(e.target.value)
+              }}
               />
           </Search>
 

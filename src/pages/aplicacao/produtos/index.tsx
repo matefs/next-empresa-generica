@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '../../../componentes/Header'
+import Header, {valorBarraPesquisa } from '../../../componentes/Header'
 import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -54,11 +54,13 @@ const Produtos = () => {
         <TextField
           label="Nome" 
           margin="normal"
+          required
         />
         <TextField
           label="Preço" 
           margin="normal"
           type="number"
+          required
           InputProps={{
             inputProps: { min: 0 },
           }}
@@ -67,8 +69,9 @@ const Produtos = () => {
           label="Quantidade" 
           margin="normal"
           type="number"
+          required 
           InputProps={{
-            inputProps: { min: 0 },
+            inputProps: { min: 0},
           }}
         />
         <TextField
@@ -112,7 +115,10 @@ const Produtos = () => {
             justifyContent: 'center',
             flexWrap: 'wrap',
             gap: {sm: 4, md: 5, lg: 9}
-          }} > {/* Principal */}
+            
+          }}
+           onClick={() => console.log(valorBarraPesquisa)}
+           > {/* Principal */}
 
 
 

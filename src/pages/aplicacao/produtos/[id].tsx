@@ -81,10 +81,10 @@ function ProdutoIndividualComponente() {
  
       { isLoading == false && isEditing == false ? 
 
-<Card sx={{  width:300, maxWidth: 745 }}>
+<Card sx={{  width:400, maxWidth: 845  }}>
 
       <CardMedia
-        sx={{ height: 260, maxHeight: 700 }}
+        sx={{ height: {xs: 290, md: 400, lg: 420}, maxHeight: 700 }}
         image={produtoIndividual.imagem}
       />
 
@@ -107,7 +107,11 @@ function ProdutoIndividualComponente() {
 
       </CardContent>
       
-      <CardActions>
+      <CardActions  sx={{
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}}>
         <Button size="small" onClick={() => setIsEditing(true)}>Editar</Button>
         <Button size="small" color='error'>Deletar</Button>
       </CardActions>
@@ -115,8 +119,8 @@ function ProdutoIndividualComponente() {
 </Card> 
       : isEditing == true ?  
       
-      <form onSubmit={handleSubmit}>
-      <Box display="flex" flexDirection="column" sx={{backgroundColor: 'white', padding:4, borderRadius: 2}}>
+      <form onSubmit={handleSubmit} >
+      <Box display="flex" flexDirection="column"  sx={{backgroundColor: 'white', padding:4, borderRadius: 2,  width: { xs: '100%', sm:  400, md: 500, lg: 600}}} >
 
         <Typography >Edite o cadastro do produto: </Typography>
         <TextField
@@ -158,6 +162,7 @@ function ProdutoIndividualComponente() {
           margin="normal"
         />
 
+
         <Button type="submit" variant="contained" color="primary" style={{marginTop:'5%'}}>
           Cadastrar
         </Button>
@@ -165,6 +170,8 @@ function ProdutoIndividualComponente() {
         <Button type="submit" variant="outlined" style={{marginTop:'5%'}} onClick={() => setIsEditing(false)}>
          Cancelar 
         </Button>
+
+
 
       </Box>
     </form>

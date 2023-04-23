@@ -32,9 +32,9 @@ const Produtos = () => {
       <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
       listaProdutos.map((item,index) => ( 
 
-<Card  key={item.id}>
+<Card  key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
 
-        <Typography  onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</Typography>
+        <Typography  >{item.nome}</Typography>
         <Typography> {item.quantidade}</Typography>
 </Card>
 

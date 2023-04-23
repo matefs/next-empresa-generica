@@ -56,7 +56,7 @@ function ProdutoIndividualComponente() {
       router.push('/aplicacao/produtos');
      }) : undefined 
  
-    }, [id])
+  }, [id])
 
 
   useEffect(() => {

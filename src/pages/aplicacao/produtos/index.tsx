@@ -43,38 +43,14 @@ const Produtos = () => {
     <Header />
 
             
-                      <Container maxWidth="sm">
-                        <Typography
-                          component="h1"
-                          variant="h2"
-                          align="center"
-                          color="text.primary"
-                          gutterBottom
-                        >
-                          Produtos
-                        </Typography>
-            
-                      </Container>
 
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: {sm: 4, md: 5, lg: 9}
-          }}
-        
-        >
 
 
 {
   cadastrandoNovo == true ?  <>
-    <form onSubmit={pegarEnvioNovoProduto}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }} >
+    <form onSubmit={pegarEnvioNovoProduto} style={{position:'absolute', backgroundColor: 'white', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',  width: '80%', borderRadius: 10}} >
+      <Typography variant='h5'> Cadastre um novo produto:</Typography>
         <TextField
           label="Nome" 
           margin="normal"
@@ -98,20 +74,50 @@ const Produtos = () => {
         <TextField
           label="URL da imagem do produto" 
           margin="normal"
+          placeholder='https://endereco-imagem.com.br'
         />
 
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit"  sx={{marginTop: '3%'}}>
           Adicionar Produto
         </Button>
 
-        <Button  type="submit" onClick={ () => setCadastrandoNovo(false)}>
+        <Button  type="submit" onClick={ () => setCadastrandoNovo(false)} sx={{marginTop: '3%'}}>
           Cancelar
         </Button>
 
       </Box>
     </form>
 
-  </> :  cadastrandoNovo == false && listaProdutos.length > 1 ?
+  </> :  undefined  }  
+
+                      <Container maxWidth="sm">
+                        <Typography
+                          component="h1"
+                          variant="h2"
+                          align="center"
+                          color="text.primary"
+                          gutterBottom
+                        >
+                          Produtos
+                        </Typography>
+                      </Container>
+
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            gap: {sm: 4, md: 5, lg: 9}
+          }} > {/* Principal */}
+
+
+
+  
+{ cadastrandoNovo == false && listaProdutos.length > 1 ?
    <Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
 
       <CardMedia

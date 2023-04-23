@@ -27,8 +27,9 @@ const Produtos = () => {
       <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
       listaProdutos.map((item,index) => ( 
 
-        <p key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</p>
-      
+        <Typography key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</Typography>
+        
+
       )) }
 
         <Box

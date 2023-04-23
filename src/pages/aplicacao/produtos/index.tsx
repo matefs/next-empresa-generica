@@ -26,19 +26,6 @@ const Produtos = () => {
   return (
     <>
     <Header />
-    <div> 
-
-      { listaProdutos.length < 1 ? 
-      <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
-      listaProdutos.map((item,index) => ( 
-
-<Card  key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
-
-        <Typography  >{item.nome}</Typography>
-        <Typography> {item.quantidade}</Typography>
-</Card>
-
-      )) }
 
         <Box
           sx={{
@@ -61,7 +48,21 @@ const Produtos = () => {
           </Container>
         </Box>
 
-    </div>
+
+      { listaProdutos.length < 1 ? 
+      <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
+      listaProdutos.map((item,index) => ( 
+
+<Card  key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
+
+        <Typography  >{item.nome}</Typography>
+        <Typography> {item.quantidade}</Typography>
+</Card>
+
+      )) }
+
+
+
     </>
   );
 };

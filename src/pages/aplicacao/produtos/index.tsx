@@ -3,7 +3,7 @@ import Header from '../../../componentes/Header'
 import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Container, Typography, Button } from '@mui/material'
+import { Box, Container, Typography, Button, TextField } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress';
 
 import Card from '@mui/material/Card';
@@ -16,7 +16,21 @@ import { Produto } from '../types/types'
 const Produtos = () => {
   const router = useRouter();
   const [ listaProdutos, setListaProdutos ] = useState<Produto[]>([])
-  const [cadastrandoNovo, setCadastrandoNovo ] = useState(false)
+  const [ cadastrandoNovo, setCadastrandoNovo ] = useState(false)
+
+  const [ novoProduto, setNovoProduto ] = useState({
+    nome: '',
+    price: 0,
+    quantidade: 0,
+    imagemUrl: ''
+  })
+
+
+  function pegarEnvioNovoProduto(event) {
+    event?.preventDefault()
+    console.log(event)
+  }
+ 
 
   useEffect( () => {
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
@@ -41,13 +55,6 @@ const Produtos = () => {
                         </Typography>
             
                       </Container>
-{
-  cadastrandoNovo == true ?  <>
-  
-  tops
-  </> :  undefined
-}
-
 
         <Box
           sx={{
@@ -64,9 +71,47 @@ const Produtos = () => {
         >
 
 
+{
+  cadastrandoNovo == true ?  <>
+    <form onSubmit={pegarEnvioNovoProduto}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }} >
+        <TextField
+          label="Nome" 
+          margin="normal"
+        />
+        <TextField
+          label="Preço" 
+          margin="normal"
+          type="number"
+          InputProps={{
+            inputProps: { min: 0 },
+          }}
+        />
+        <TextField
+          label="Quantidade" 
+          margin="normal"
+          type="number"
+          InputProps={{
+            inputProps: { min: 0 },
+          }}
+        />
+        <TextField
+          label="URL da imagem do produto" 
+          margin="normal"
+        />
 
+        <Button variant="contained" type="submit">
+          Adicionar Produto
+        </Button>
 
-<Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
+        <Button  type="submit" onClick={ () => setCadastrandoNovo(false)}>
+          Cancelar
+        </Button>
+
+      </Box>
+    </form>
+
+  </> :  cadastrandoNovo == false && listaProdutos.length > 1 ? <Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
 
       <CardMedia
         sx={{ height: 260, maxHeight: 700 }}
@@ -86,7 +131,9 @@ const Produtos = () => {
       </CardContent>
    
 
-</Card> 
+</Card> : undefined
+/** Fim cadastrando novo */} 
+
 
 
       { listaProdutos.length < 1 ? 

@@ -53,11 +53,28 @@ const Produtos = () => {
       <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
       listaProdutos.map((item,index) => ( 
 
-<Card  key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
+<Card key={item.id} sx={{  width:300, maxWidth: 745 }} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
 
-        <Typography  >{item.nome}</Typography>
-        <Typography> {item.quantidade}</Typography>
-</Card>
+      <CardMedia
+        sx={{ height: 260, maxHeight: 700 }}
+        image={item.imagem}
+      />
+
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {item.nome} 
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary">
+          R$ {item.preco}  
+        </Typography>
+ 
+
+      </CardContent>
+   
+
+</Card> 
+
 
       )) }
 

@@ -35,7 +35,7 @@ const Produtos = () => {
   useEffect( () => {
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
     .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
-
+    .catch( (erro) => {alert(`Ocorreu um erro: \n ${erro}`)})
   }, [])
 
   return (

@@ -16,6 +16,7 @@ import { Produto } from '../types/types'
 const Produtos = () => {
   const router = useRouter();
   const [ listaProdutos, setListaProdutos ] = useState<Produto[]>([])
+  const [cadastrandoNovo, setCadastrandoNovo ] = useState(false)
 
   useEffect( () => {
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
@@ -40,6 +41,14 @@ const Produtos = () => {
                         </Typography>
             
                       </Container>
+{
+  cadastrandoNovo == true ?  <>
+  
+  tops
+  </> :  undefined
+}
+
+
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -56,7 +65,8 @@ const Produtos = () => {
 
 
 
-<Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }}  >
+
+<Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
 
       <CardMedia
         sx={{ height: 260, maxHeight: 700 }}

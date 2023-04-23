@@ -48,9 +48,7 @@ const Produtos = () => {
             >
               Produtos
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Nesta seção do site, você encontra os vários produtos cadastrados. Cada um deles é possivel ser alterado e deletado.
-            </Typography> 
+
           </Container>
         </Box>
 

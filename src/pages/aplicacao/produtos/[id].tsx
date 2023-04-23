@@ -81,7 +81,7 @@ function ProdutoIndividualComponente() {
  
       { isLoading == false && isEditing == false ? 
 
-<Card sx={{  width:400, maxWidth: 845  }}>
+<Card sx={{  width: {xs: 290, md:400, lg:500}, maxWidth: 845  }}>
 
       <CardMedia
         sx={{ height: {xs: 290, md: 400, lg: 420}, maxHeight: 700 }}

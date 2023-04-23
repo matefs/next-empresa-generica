@@ -77,6 +77,7 @@ const Produtos = () => {
         <TextField
           label="URL da imagem do produto" 
           margin="normal"
+          required
           placeholder='https://endereco-imagem.com.br'
         />
 

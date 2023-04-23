@@ -6,6 +6,11 @@ import { useRouter } from 'next/router';
 import { Box, Container, Typography, Button } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress';
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
 import { Produto } from '../types/types'
 
 const Produtos = () => {
@@ -27,8 +32,9 @@ const Produtos = () => {
       <CircularProgress style={{width: '10%', marginLeft:'45%', marginTop:'10%', position: 'fixed'}}/> : 
       listaProdutos.map((item,index) => ( 
 
+
         <Typography key={item.id} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}>{item.nome}</Typography>
-        
+        <Typography> {item.quantidade}</Typography>
 
       )) }
 

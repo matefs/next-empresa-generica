@@ -49,13 +49,14 @@ const Produtos = () => {
             alignItems: 'center',
             justifyContent: 'center',
             flexWrap: 'wrap',
+            gap: {sm: 4, md: 5, lg: 9}
           }}
         
         >
 
 
 
-<Card sx={{  width:300, maxWidth: 745 }}>
+<Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }}  >
 
       <CardMedia
         sx={{ height: 260, maxHeight: 700 }}
@@ -68,7 +69,7 @@ const Produtos = () => {
         </Typography>
 
         <Typography variant="body2" color="text.secondary">
-          Clique aqui para adicionar um novo produto
+          Clique  para adicionar um novo produto
         </Typography>
  
 
@@ -82,7 +83,7 @@ const Produtos = () => {
       <CircularProgress style={{width: '10%', marginLeft:'0%', marginTop:'10%', position: 'fixed'}}/> : 
       listaProdutos.map((item,index) => ( 
 
-<Card key={item.id} sx={{  width:300, maxWidth: 745 }} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
+<Card key={item.id} sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => router.push(`/aplicacao/produtos/${item.id}`)} >
 
       <CardMedia
         sx={{ height: 260, maxHeight: 700 }}

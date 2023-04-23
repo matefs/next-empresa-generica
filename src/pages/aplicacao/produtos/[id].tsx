@@ -107,11 +107,7 @@ function ProdutoIndividualComponente() {
 
       </CardContent>
       
-      <CardActions  sx={{
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}}>
+      <CardActions  sx={{ display: 'flex',   alignItems: 'center',   justifyContent: 'center'}}>
         <Button size="small" onClick={() => setIsEditing(true)}>Editar</Button>
         <Button size="small" color='error'>Deletar</Button>
       </CardActions>

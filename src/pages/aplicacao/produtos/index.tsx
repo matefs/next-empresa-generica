@@ -111,7 +111,8 @@ const Produtos = () => {
       </Box>
     </form>
 
-  </> :  cadastrandoNovo == false && listaProdutos.length > 1 ? <Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
+  </> :  cadastrandoNovo == false && listaProdutos.length > 1 ?
+   <Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
 
       <CardMedia
         sx={{ height: 260, maxHeight: 700 }}

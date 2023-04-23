@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Header, {valorBarraPesquisa } from '../../../componentes/Header'
+import Header, {valorBarraPesquisaPublico } from '../../../componentes/Header'
 import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -117,7 +117,7 @@ const Produtos = () => {
             gap: {sm: 4, md: 5, lg: 9}
             
           }}
-           onClick={() => console.log(valorBarraPesquisa)}
+           onClick={() => console.log(valorBarraPesquisaPublico)}
            > {/* Principal */}
 
 

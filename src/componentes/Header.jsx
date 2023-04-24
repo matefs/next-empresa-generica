@@ -65,9 +65,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export var valorBarraPesquisaPublico;
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ onChildEvent }) {
   const router = useRouter();
   const [ valorBarraPesquisa, setValorBarraPesquisa ] = useState('');
   
@@ -152,10 +151,15 @@ export default function SearchAppBar() {
             <StyledInputBase
               placeholder="Pesquisar..."
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(e) => {
-                const novoValorBarraPesquisa = e.target.value
-                setValorBarraPesquisa(e.target.value)
-                valorBarraPesquisaPublico =  novoValorBarraPesquisa
+              onKeyDown={(e) => {
+                e.key == 'Enter' && e.target.value != undefined && e.target.value.toString().length >= 1? 
+                onChildEvent(e.target.value)
+                : undefined
+              }}
+              onChange={(evento) => {
+                evento.target.value == '' ? 
+                onChildEvent('')
+                : undefined
               }}
               />
           </Search>

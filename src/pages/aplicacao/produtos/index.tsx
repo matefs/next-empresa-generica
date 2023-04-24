@@ -34,7 +34,7 @@ const Produtos = () => {
  
 
   function trazTodosProdutos(){
-    axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
+    axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos?_limit=20')
     .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
     .catch( (erro) => {alert(`Ocorreu um erro: \n ${erro}`)}) 
   }

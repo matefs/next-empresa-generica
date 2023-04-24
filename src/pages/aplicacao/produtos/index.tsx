@@ -30,12 +30,27 @@ const Produtos = () => {
     event?.preventDefault()
     console.log(event)
   }
+   
+
+
+ function filtrarProdutos() {
+  valorBarraPesquisaPublico!= undefined &&  valorBarraPesquisaPublico.toString().length >= 1 ? 
+    axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos?nome_like=${valorBarraPesquisaPublico}`)
+    .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
+  : valorBarraPesquisaPublico == undefined || valorBarraPesquisaPublico.toString().length < 1 ? 
+    trazTodosProdutos() 
+  : undefined 
+  }
  
 
-  useEffect( () => {
+  function trazTodosProdutos(){
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos')
     .then(respostaRequisicao => setListaProdutos(respostaRequisicao.data))
-    .catch( (erro) => {alert(`Ocorreu um erro: \n ${erro}`)})
+    .catch( (erro) => {alert(`Ocorreu um erro: \n ${erro}`)}) 
+  }
+
+  useEffect( () => {
+  trazTodosProdutos()
   }, [])
 
   return (
@@ -118,13 +133,16 @@ const Produtos = () => {
             gap: {sm: 4, md: 5, lg: 9}
             
           }}
-           onClick={() => console.log(valorBarraPesquisaPublico)}
+           onClick={() => {
+            console.log(valorBarraPesquisaPublico)
+            filtrarProdutos()
+          }}
            > {/* Principal */}
 
 
 
   
-{ cadastrandoNovo == false && listaProdutos.length > 1 ?
+{ cadastrandoNovo == false && listaProdutos.length >= 1 ?
    <Card sx={{  width:300, maxWidth: 745,  cursor: `pointer` }} onClick={() => setCadastrandoNovo(true)} >
 
       <CardMedia

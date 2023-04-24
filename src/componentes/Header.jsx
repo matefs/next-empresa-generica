@@ -18,6 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Head from "next/head";
+import Tooltip from '@mui/material/Tooltip';
 
 import {useRouter} from 'next/router';
 import { useState } from 'react'
@@ -144,6 +145,8 @@ export default function SearchAppBar({ onChildEvent }) {
             Sistema
           </Typography>
 
+
+   <Tooltip title="Aperte a tecla enter para pesquisar">
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -163,7 +166,7 @@ export default function SearchAppBar({ onChildEvent }) {
               }}
               />
           </Search>
-
+</Tooltip>
 
           <SwipeableDrawer
             anchor={'left'}

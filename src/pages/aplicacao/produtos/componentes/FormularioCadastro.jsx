@@ -48,7 +48,7 @@ export default function FormularioCadastro({ativo}){
           Adicionar Produto
         </Button>
 
-        <Button  type="submit" onClick={ () => ativo(false)} sx={{marginTop: '3%'}}>
+        <Button onClick={ () => ativo(false)} sx={{marginTop: '3%'}}>
           Cancelar
         </Button>
 

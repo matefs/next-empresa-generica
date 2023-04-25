@@ -163,7 +163,7 @@ function ProdutoIndividualComponente() {
          Salvar 
         </Button>
 
-        <Button type="submit" variant="outlined" style={{marginTop:'5%'}} onClick={() => setIsEditing(false)}>
+        <Button variant="outlined" style={{marginTop:'5%'}} onClick={() => setIsEditing(false)}>
          Cancelar 
         </Button>
 

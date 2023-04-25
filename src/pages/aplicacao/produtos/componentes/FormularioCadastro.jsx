@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Box, Alert, Typography, TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
+import axios from 'axios'
+import CircularProgress from "@mui/material/CircularProgress";
+
 
 export default function FormularioCadastro({ ativo }) {
   const {
@@ -8,18 +11,44 @@ export default function FormularioCadastro({ ativo }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [houveErroBooleano, setHouveErroBooleano] = useState(false);
+  
+  const [tipoDoAlerta, setTipoDoAlerta ] = useState('error')
+  const [textoDoAlerta, setTextoDoAlerta] = useState("Houve um erro ao cadastrar o produto, corrija os dados informados!")
+  const [houveAlertaBooleano, setHouveAlertaBooleano] = useState(false);
+  const [ carregandoBooleano, setCarregandoBooleano ] = useState(false)
 
-  function chamarAlerta(textoDoAlerta) {
+  function chamarAlerta(texto, tipo) {
+    
     return (
       <Alert
-        severity="error"
+        severity={tipo}
         sx={{ marginTop: 2, marginBottom: 2, cursor: "pointer" }}
-        onClick={() => setHouveErroBooleano(false)}
+        onClick={() => setHouveAlertaBooleano(false)}
       >
-        {textoDoAlerta}
+        {texto}
       </Alert>
     );
+  }
+
+  function cadastrarNovoProduto(dadosFormulario) {
+     
+    axios.post('https://generic-api-backend.mateusschverz.repl.co/produtos', dadosFormulario , {
+    headers: {
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(resposta => {
+        setTextoDoAlerta('Novo produto cadastrado com sucesso !')
+        setTipoDoAlerta('success')
+        setHouveAlertaBooleano(true)
+        setCarregandoBooleano(true)
+
+        console.log(resposta)
+        setTimeout(() => ativo(false) , 2000)
+
+    })
+
+    
   }
 
   const onSubmit = (dadosFormulario) => {
@@ -27,13 +56,18 @@ export default function FormularioCadastro({ ativo }) {
     dadosFormulario.quantidade > 0;
     dadosFormulario.url.length > 1;
     dadosFormulario.url.includes("http")
-      ? alert("vai salvar")
-      : setHouveErroBooleano(true);
+      ? cadastrarNovoProduto(dadosFormulario)
+      : setHouveAlertaBooleano(true);
   };
 
   return (
     <>
-      <form
+        {houveAlertaBooleano == true
+          ? chamarAlerta(textoDoAlerta,tipoDoAlerta)
+          : null}
+
+      <form  
+        disabled={true}
         onSubmit={handleSubmit(onSubmit)}
         style={{
           position: "absolute",
@@ -53,11 +87,12 @@ export default function FormularioCadastro({ ativo }) {
             borderRadius: 10,
           }}
         >
-          {houveErroBooleano == true
-            ? chamarAlerta(
-                "Houve um erro ao cadastrar o produto, corrija os dados informados!"
-              )
-            : null}
+            { carregandoBooleano == true ? <CircularProgress 
+              style={{
+              width: "10%",
+              marginLeft: "40%",
+              marginTop: "10%",
+              position: "fixed"}}  /> : null }
 
           <Typography variant="h5"> Cadastre um novo produto:</Typography>
           <TextField

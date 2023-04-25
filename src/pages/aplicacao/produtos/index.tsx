@@ -17,7 +17,7 @@ const Produtos = () => {
   const router = useRouter();
   const [listaProdutos, setListaProdutos] = useState<Produto[]>([]);
   const [cadastrandoNovo, setCadastrandoNovo] = useState(false);
-
+ 
   function trazTodosProdutos() {
     axios
       .get(
@@ -66,6 +66,10 @@ const Produtos = () => {
   useEffect(() => {
     trazTodosProdutos();
   }, []);
+
+  useEffect(() => {
+    trazTodosProdutos();
+  }, [cadastrandoNovo]);
 
   return (
     <>

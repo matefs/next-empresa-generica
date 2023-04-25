@@ -18,12 +18,6 @@ const Produtos = () => {
   const [ listaProdutos, setListaProdutos ] = useState<Produto[]>([])
   const [ cadastrandoNovo, setCadastrandoNovo ] = useState(false)
 
-  const [ novoProduto, setNovoProduto ] = useState({
-    nome: '',
-    price: 0,
-    quantidade: 0,
-    imagemUrl: ''
-  })
 
   function trazTodosProdutos(){
     axios.get('https://generic-api-backend.mateusschverz.repl.co/produtos?_limit=20')

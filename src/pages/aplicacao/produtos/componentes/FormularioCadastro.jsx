@@ -38,10 +38,10 @@ export default function FormularioCadastro({ ativo }) {
     }
     })
     .then(resposta => {
+        setCarregandoBooleano(true)
         setTextoDoAlerta('Novo produto cadastrado com sucesso !')
         setTipoDoAlerta('success')
         setHouveAlertaBooleano(true)
-        setCarregandoBooleano(true)
 
         console.log(resposta)
         setTimeout(() => ativo(false) , 2000)
@@ -54,8 +54,8 @@ export default function FormularioCadastro({ ativo }) {
   const onSubmit = (dadosFormulario) => {
     dadosFormulario.nome != "" && dadosFormulario.preco > 0;
     dadosFormulario.quantidade > 0;
-    dadosFormulario.url.length > 1;
-    dadosFormulario.url.includes("http")
+    dadosFormulario.imagem.length > 1;
+    dadosFormulario.imagem.includes("http")
       ? cadastrarNovoProduto(dadosFormulario)
       : setHouveAlertaBooleano(true);
   };
@@ -127,7 +127,7 @@ export default function FormularioCadastro({ ativo }) {
             margin="normal"
             required
             placeholder="https://endereco-imagem.com.br"
-            {...register("url")}
+            {...register("imagem")}
           />
 
           <Button variant="contained" type="submit" sx={{ marginTop: "3%" }}>

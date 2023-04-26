@@ -22,6 +22,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 
+import ImagemLogin from '../../public/assets/ilustracao-para-login.jpg'
 
 /*
 1. Faz o request com o axios.
@@ -144,7 +145,6 @@ function Login() {
         setIsLoading(false);
       });
   } */
-
   return (
     <>
       <Head>
@@ -163,7 +163,7 @@ function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: `url(${ImagemLogin.src})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

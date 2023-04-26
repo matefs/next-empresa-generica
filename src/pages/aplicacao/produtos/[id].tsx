@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
-import { TextField, Box } from '@mui/material'
+import { TextField, Box, Alert } from '@mui/material'
 
 import { Produto } from '../types/types'
 
@@ -23,6 +23,9 @@ function ProdutoIndividualComponente() {
  const [produtoIndividual, setProdutoIndividual] = useState<Produto>({ id: 0, nome: '', preco: 0, quantidade: 0 , imagem: ''}); 
  const [isEditing, setIsEditing] = useState(false)
  const [ isLoading, setIsLoading ] = useState(true) 
+ const [tipoDoAlerta, setTipoDoAlerta ] = useState('')
+ const [textoDoAlerta, setTextoDoAlerta] = useState('')
+ const [houveAlertaBooleano, setHouveAlertaBooleano] = useState(false);
 
   const [formData, setFormData] = useState({ 
     nome: '',
@@ -31,14 +34,55 @@ function ProdutoIndividualComponente() {
     imagem: ''
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
+
+
+function chamarAlerta(texto:string, tipo: string) {
+    
+    return (
+      <Alert
+        severity={tipo}
+        sx={{ marginTop: 2, marginBottom: 2, cursor: "pointer" }}
+        onClick={() => setHouveAlertaBooleano(false)} 
+      >
+        {texto}
+      </Alert>
+    );
+  }
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData); 
+    const { nome, preco, quantidade, imagem  } = formData;
+
+    nome.length >= 1 && preco >= 1 && quantidade >= 1 && imagem.includes('http') ?
+     axios.put(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`, formData , {
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    }).then(resposta => {
+      setTipoDoAlerta('success');
+      setTextoDoAlerta('O produto atual foi editado com sucesso');
+      
+      setIsEditing(false)
+      setHouveAlertaBooleano(true)
+      trazProdutoIndividual() 
+    })
+    .catch((erro) => alert(`Houve um erro ao editar produto: \n ${erro}`))
+
+    : nome.length < 1 || preco < 1 || quantidade < 1 || !imagem.includes('http') ? (function() {
+      setTipoDoAlerta('error')
+      setTextoDoAlerta('Houve um erro ao editar o produto, você deve corrigir os campos abaixo')
+      setHouveAlertaBooleano(true)
+    
+    })()
+    : null
+
   };
 
 
@@ -57,8 +101,8 @@ function ProdutoIndividualComponente() {
   }
 
 
-  useEffect(() => { 
-    id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
+  function trazProdutoIndividual(){
+     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
      .then( (respostaItem) =>  {
       setProdutoIndividual(respostaItem.data)
       setIsLoading(false)
@@ -68,6 +112,11 @@ function ProdutoIndividualComponente() {
       alert("Ocorreu um erro \n" + e)
       router.push('/aplicacao/produtos');
      }) : undefined 
+ 
+  }
+
+  useEffect(() => { 
+    trazProdutoIndividual()
  
   }, [id])
 
@@ -92,6 +141,11 @@ function ProdutoIndividualComponente() {
   style={{ minHeight: '100vh', backgroundColor: '#222f3e'}}
 >
  
+        {houveAlertaBooleano == true
+          ? chamarAlerta(textoDoAlerta,tipoDoAlerta)
+          : null}
+
+
       { isLoading == false && isEditing == false ? 
 
 <Card sx={{  width: {xs: 290, md:400, lg:500}, maxWidth: 845  }}>
@@ -141,6 +195,7 @@ function ProdutoIndividualComponente() {
 
         <TextField
           name="nome"
+          required
           label="Nome"
           value={formData.nome}
           onChange={handleChange}
@@ -148,6 +203,8 @@ function ProdutoIndividualComponente() {
         />
 
         <TextField
+          type="number"
+          required
           name="preco"
           label="Preço"
           value={formData.preco}
@@ -156,6 +213,8 @@ function ProdutoIndividualComponente() {
         />
 
         <TextField
+          type='number'
+          required
           name="quantidade"
           label="Quantidade"
           value={formData.quantidade}
@@ -164,6 +223,7 @@ function ProdutoIndividualComponente() {
         />
 
         <TextField
+          required
           name="imagem"
           label="Imagem"
           value={formData.imagem}

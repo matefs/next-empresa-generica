@@ -109,14 +109,13 @@ const formulario: any = {
 
 
               <Grid item xs={12}>
+                Data de nascimento:
       <TextField
-        required
-        label=""
+        required 
         name="dataNascimento"
         value={dataNascimento}
         onChange={(e) => setDataNascimento(e.target.value)}
-        type="date"
-        placeholder="dd//mm/aaaa"
+        type="date" 
         fullWidth
       />
       </Grid>

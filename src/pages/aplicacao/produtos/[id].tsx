@@ -42,6 +42,19 @@ function ProdutoIndividualComponente() {
   };
 
 
+  function deletarProduto() {
+    var confirmacao = confirm('Tem certeza que deseja deletar o produto ? ')
+
+    confirmacao == true ? 
+    axios.delete(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
+    .then((resposta) => {
+      alert('Produto deletado com sucesso')
+      router.push('/aplicacao/produtos')
+    })
+    .catch(erro => alert(`Houve um erro ao deletar: \n ${erro}`))
+    : null
+
+  }
 
 
   useEffect(() => { 
@@ -109,7 +122,7 @@ function ProdutoIndividualComponente() {
       
       <CardActions  sx={{ display: 'flex',   alignItems: 'center',   justifyContent: 'center'}}>
         <Button size="small" onClick={() => setIsEditing(true)}>Editar</Button>
-        <Button size="small" color='error'>Deletar</Button>
+        <Button size="small" color='error' onClick={() => deletarProduto()}>Deletar</Button>
       </CardActions>
 
 </Card> 

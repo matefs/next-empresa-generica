@@ -16,7 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import PersonIcon from '@mui/icons-material/Person';
 import Head from "next/head";
 import Tooltip from '@mui/material/Tooltip';
 
@@ -99,15 +99,14 @@ export default function SearchAppBar({ onChildEvent }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Produtos', 'Postagens', 'Usuários'].map((text, index) => (
+        {['Produtos',  'Usuários'].map((text, index) => (
           <ListItem key={text} disablePadding onClick={ 
             text == 'Produtos' ? () => { router.push('/aplicacao/produtos')} : 
-            text == 'Postagens'? () => {router.push('/aplicacao/postagens')} : 
             text == 'Usuários' ? () => {router.push('/aplicacao/usuarios')}  : undefined
           } >
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <InboxIcon /> : <PersonIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

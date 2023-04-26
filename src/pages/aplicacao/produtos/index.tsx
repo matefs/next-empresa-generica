@@ -21,7 +21,7 @@ const Produtos = () => {
   function trazTodosProdutos() {
     axios
       .get(
-        "https://generic-api-backend.mateusschverz.repl.co/produtos?_limit=20"
+        "https://generic-api-backend.mateusschverz.repl.co/produtos?_limit=20&_sort=id&_order=desc"
       )
       .then((respostaRequisicao) => setListaProdutos(respostaRequisicao.data))
       .catch((erro) => {

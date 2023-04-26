@@ -11,8 +11,13 @@ import Container from '@mui/material/Container';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from "@mui/material";
 import CpfInput from './CpfInput'
 import { valorPublicoCPF } from "./CpfInput";
+import axios from 'axios'
+import { useRouter } from 'next/router'
+
 
 const FormularioCadastro = () => {
+  const router = useRouter()
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   //const [cpf, setCpf] = useState("");
@@ -48,13 +53,31 @@ const formulario: any = {
   };
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(valorPublicoCPF)
- /*    console.log(CpfInput.mostraValorCpf()) */
-    for( let i in formulario ) { 
-      console.log(formulario[`${i}`])
-    }
-    //console.log(formulario);
+    e.preventDefault(); 
+
+    formulario.cpf = valorPublicoCPF
+
+    formulario.nome.length >= 1 &&
+    formulario.email.includes('@') &&
+    formulario.cpf.length >= 1 && 
+    formulario.dataNascimento.length > 1 &&
+    formulario.sexo.length >= 1  &&
+    formulario.cidade.length >= 1 &&
+    formulario.estado.length >= 1  && 
+    formulario.senha == formulario.confirmarSenha
+    ? 
+    axios.post('https://generic-api-backend.mateusschverz.repl.co/usuarios',formulario,{
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    }).then(resposta => {
+      console.log(resposta)
+      Object.keys(resposta.data).length >= 1 ? alert('Usuário cadastrado com sucesso ') : alert('Houve um erro ao cadastrar o usuário, tente novamente')
+      router.push('./')
+    })
+ 
+    : alert('Informaçoes incorretas ou faltando, corrija os campos abaixo !')
+  
   };
 
   return (
@@ -97,6 +120,7 @@ const formulario: any = {
         label="Email"
         required
         name="email"
+        type='email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         fullWidth

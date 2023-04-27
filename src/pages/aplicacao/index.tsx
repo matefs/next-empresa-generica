@@ -2,8 +2,6 @@ import React from 'react';
 import { useContext } from 'react';
 import ContextoDaAplicacao from "../../../ContextoDaAplicacao.js";
 import { useRouter } from 'next/router'
-import { DataGrid } from '@mui/x-data-grid';
-import Box from '@mui/material/Box';
 import Header from "../../componentes/Header"
 
 

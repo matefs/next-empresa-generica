@@ -141,13 +141,22 @@ function chamarAlerta(texto:string, tipo: string) {
   style={{ minHeight: '100vh', backgroundColor: '#222f3e'}}
 >
  
+        {isLoading == false ? 
+        <Typography 
+        sx={{color:'#64748b', marginLeft: '-15%', marginBottom: '1%', cursor: 'pointer'}}
+        onClick={ () => router.push('/aplicacao/produtos')}
+        > ← Voltar para página principal </Typography>
+        : null}
+
+
         {houveAlertaBooleano == true
           ? chamarAlerta(textoDoAlerta,tipoDoAlerta)
           : null}
 
 
-      { isLoading == false && isEditing == false ? 
 
+      { isLoading == false && isEditing == false ? 
+ 
 <Card sx={{  width: {xs: 290, md:400, lg:500}, maxWidth: 845  }}>
 
       <CardMedia
@@ -179,7 +188,8 @@ function chamarAlerta(texto:string, tipo: string) {
         <Button size="small" color='error' onClick={() => deletarProduto()}>Deletar</Button>
       </CardActions>
 
-</Card> 
+</Card>  
+
       : isEditing == true ?  
       
       <form onSubmit={handleSubmit} >

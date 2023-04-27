@@ -9,7 +9,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-
+import AddIcon from '@mui/icons-material/Add';
 import { Produto } from "../types/types";
 import FormularioCadastro from "./componentes/FormularioCadastro";
 
@@ -111,11 +111,8 @@ const Produtos = () => {
               sx={{ width: 300, maxWidth: 745, cursor: `pointer` }}
               onClick={() => setCadastrandoNovo(true)}
             >
-              <CardMedia
-                sx={{ height: 260, maxHeight: 700 }}
-                image={
-                  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F582%2F754%2Foriginal%2Fvector-button-plus-icon.jpg&f=1&nofb=1&ipt=24249235270c265685bda77c0dfe13015c81fcc2f83370cc4e29dc210d2636dd&ipo=images"
-                }
+              <AddIcon
+                sx={{ height: 260, maxHeight: 700, width:'100%' }}
               />
 
               <CardContent>

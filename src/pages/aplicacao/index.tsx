@@ -18,7 +18,7 @@ export default function Index( ) {
 
   return (
     <>
-      <Header /> 
+      <Header onChildEvent={null}/> 
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:500 }}>
       <Typography sx={{color: 'grey'}}>Acesse o menu à esquerda para ver mais opções.</Typography>
     </Box>

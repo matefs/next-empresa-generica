@@ -178,12 +178,7 @@ function Login() {
       </Head>
 
 <Grid container component="main" sx={{ height: '100vh' }}>
-  {existeAlerta.ativo == true ?  
-  <Alert 
-  severity={existeAlerta.tipo}
-  sx={{position:'absolute'}}
-  >{existeAlerta.texto}</Alert> 
-  : null }
+
 
         <CssBaseline />
         <Grid
@@ -224,7 +219,8 @@ function Login() {
                 fullWidth
                 id="email"
                 type='email'
-                label="Nome de usuário"
+                label="Email do usuário"
+                placeholder='usuario@email.com'
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -243,7 +239,13 @@ function Login() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Lembrar-me"
               />
-
+  {existeAlerta.ativo == true ?  
+  <Alert 
+  severity={existeAlerta.tipo}
+  onClick={() => setExisteAlerta({...existeAlerta, ativo: false})}
+  sx={{cursor:'pointer'}}
+  >{existeAlerta.texto}</Alert> 
+  : null }
 
 {
               isLoading ? 

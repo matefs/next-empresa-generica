@@ -28,7 +28,7 @@ export default function Index(){
           .then((respostaRequisicao) => {
             respostaRequisicao.data.length > 0
               ? setListaUsuarios(respostaRequisicao.data)
-              : alert("Produtos não encontrados");
+              : alert("Usuários não encontrados");
           })
       : valorCampoPesquisa == undefined
       ? undefined

@@ -50,7 +50,7 @@ function Login() {
  
       let i = 0;
       while (i < listaDeUsuarios.length && !encontrado) { 
-        if (listaDeUsuarios[i].email === credenciais.username) {
+        if (listaDeUsuarios[i].email === credenciais.username && listaDeUsuarios[i].senha == credenciais.password) {
           encontrado = true;  
           break;  
         }

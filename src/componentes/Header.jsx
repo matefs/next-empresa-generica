@@ -144,13 +144,15 @@ export default function SearchAppBar({ onChildEvent }) {
             Sistema
           </Typography>
 
+{console.log(router.route)}
 
    <Tooltip title="Aperte a tecla enter para pesquisar">
-          <Search>
+          <Search >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              disabled={router.route == '/aplicacao' ? true : false}
               placeholder="Pesquisar..."
               inputProps={{ 'aria-label': 'search' }}
               onKeyDown={(e) => {

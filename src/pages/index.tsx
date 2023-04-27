@@ -72,7 +72,6 @@ function Login() {
         setIsLoading(false)
       }
 
-        //console.log(resposta.data)
       })
  
 

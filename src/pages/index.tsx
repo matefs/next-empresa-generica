@@ -178,7 +178,12 @@ function Login() {
       </Head>
 
 <Grid container component="main" sx={{ height: '100vh' }}>
-
+  {existeAlerta.ativo == true ?  
+  <Alert 
+  severity={existeAlerta.tipo}
+  sx={{position:'absolute'}}
+  >{existeAlerta.texto}</Alert> 
+  : null }
 
         <CssBaseline />
         <Grid
@@ -196,7 +201,6 @@ function Login() {
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-
           <Box
             sx={{
               my: 8,
@@ -212,9 +216,6 @@ function Login() {
             <Typography component="h1" variant="h5">
               Entrar
             </Typography>
-
-
-            
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               {isLoading ? "Carregando..." : ''}
               <TextField
@@ -223,7 +224,7 @@ function Login() {
                 fullWidth
                 id="email"
                 type='email'
-                label="email de usuário"
+                label="Nome de usuário"
                 name="email"
                 autoComplete="email"
                 autoFocus

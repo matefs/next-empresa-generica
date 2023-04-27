@@ -125,48 +125,7 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
-
-/*   const handleSubmit = (event) => {
-  event.preventDefault();
-
-    setIsLoading(true);
-
-    console.log(`Email: ${email}, Password: ${password}`);
-
-    var credenciais = { email: email, password: password };
-
-    var credenciaisEmFormatoJson = JSON.stringify(credenciais);
-
-    console.log(credenciaisEmFormatoJson);
-
-    var customConfig = {
-      headers: { "Content-Type": "application/json" },
-    };
-
-    axios
-      .post(urlApiLogin, credenciaisEmFormatoJson, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((respostaRequestLogin) => {
-        console.log(respostaRequestLogin);
-
-        var tokenDaResposta = respostaRequestLogin.data;
-        var valorBearer = Object.values(tokenDaResposta);
-
-        console.log(valorBearer[0]);
-        value.setBearerToken(valorBearer[0]);
-        value.setMeuNome("NILSONNN")
-        console.log(value.baererToken);
-
-        setIsLoading(false);
-        router.push('./aplicacao/')
-      })
-      .catch((erroRequestLogin) => {
-        console.log(erroRequestLogin);
-        alert("Usuário ou senha incorreto");
-        setIsLoading(false);
-      });
-  } */
+ 
   return (
     <>
       <Head>

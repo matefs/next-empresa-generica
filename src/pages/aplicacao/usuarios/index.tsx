@@ -19,6 +19,31 @@ export default function Index(){
         })
     }
 
+      function filtrarUsuarios(valorCampoPesquisa: string) {
+    valorCampoPesquisa != undefined && valorCampoPesquisa.toString().length >= 1
+      ? axios
+          .get(
+            `https://generic-api-backend.mateusschverz.repl.co/usuarios?q=${valorCampoPesquisa}`
+          )
+          .then((respostaRequisicao) => {
+            respostaRequisicao.data.length > 0
+              ? setListaUsuarios(respostaRequisicao.data)
+              : alert("Produtos não encontrados");
+          })
+      : valorCampoPesquisa == undefined
+      ? undefined
+      : valorCampoPesquisa.toString().length < 1 ||
+        valorCampoPesquisa == "" ||
+        valorCampoPesquisa == " "
+      ? carregarVariosUsuarios()
+      : undefined;
+  }
+
+    function handleChildEvent(valorCampoPesquisa: string) {
+    valorCampoPesquisa == ""
+      ? carregarVariosUsuarios()
+      : filtrarUsuarios(valorCampoPesquisa);
+    }
 
 
     useEffect(() => {
@@ -26,7 +51,8 @@ export default function Index(){
     },[])
 
     return( 
-        <> 
+        <>
+       <Header onChildEvent={handleChildEvent} /> 
 
           <Typography variant='h3' sx={{textAlign:"center"}}>Lista de usuários</Typography>
 <Box

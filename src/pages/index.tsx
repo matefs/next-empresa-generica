@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-var urlApiLogin = "https://dummyjson.com/auth/login";
+var urlApiLogin = "https://generic-api-backend.mateusschverz.repl.co/usuarios";
 import Head from "next/head";
 /* import styles from "@/styles/Home.module.css"; */
 
@@ -8,29 +8,13 @@ import { useRouter } from 'next/router';
 
 import { useContext } from "react";
 import ContextoDaAplicacao from "../../ContextoDaAplicacao.js";
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import {Grid, Box, Paper, Link, Checkbox, FormControlLabel, TextField, CssBaseline, Button, Avatar, Alert } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 
+
 import ImagemLogin from '../../public/assets/ilustracao-para-login.jpg'
-
-/*
-1. Faz o request com o axios.
-	- Pega o token, atribui ao objeto do contexto
-	- Em cada tela puxa o valor do token contexto e faz um axios get
-
-*/
-
 
 
 function Login() {
@@ -38,9 +22,14 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter()
+  const [usuarioFoiEncontrado, setUsuarioFoiEncontrado ] = useState(false);
+  const [existeAlerta, setExisteAlerta] = useState({
+    ativo: false,
+    texto: '',
+    tipo: ''
+  });
 
- 
+  const router = useRouter()
 
   
   const handleSubmit = (event) => {
@@ -51,16 +40,49 @@ function Login() {
       password: data.get('password'),
     };
     
-    console.log(credenciais)
+    //console.log(credenciais)
     setIsLoading(true); 
 
+    axios.get(urlApiLogin)
+    .then(resposta => {
+      var listaDeUsuarios = resposta.data;  
+      let encontrado = false;
+ 
+      let i = 0;
+      while (i < listaDeUsuarios.length && !encontrado) { 
+        if (listaDeUsuarios[i].email === credenciais.username) {
+          encontrado = true;  
+          break;  
+        }
+        i++;  
+      }
+  
+      if (encontrado) {
+        console.log('Item encontrado!', `valor item i ${i}`);
+        router.push('/aplicacao')
+      } else {
+
+        console.log('Item não encontrado.');
+        setExisteAlerta({
+          ativo: true,
+          texto: 'Credenciais incorretas, tente novamente ou registre-se.',
+          tipo: 'error'
+        })
+
+        setIsLoading(false)
+      }
+
+        //console.log(resposta.data)
+      })
+
+    /*
     var credenciaisEmFormatoJson = JSON.stringify(credenciais);
 
     var customConfig = {
       headers: { "Content-Type": "application/json" },
     };
 
-    axios
+     axios
       .post(urlApiLogin, credenciaisEmFormatoJson, {
         headers: { "Content-Type": "application/json" },
       })
@@ -71,9 +93,9 @@ function Login() {
         var valorBearer = Object.values(tokenDaResposta);
 
         console.log(valorBearer[0]);
-        value.setBearerToken(valorBearer[0]);
+        value?.setBearerToken(valorBearer[0]);
         console.log(respostaRequestLogin.data.firstName) 
-        value.setMeuNome(respostaRequestLogin.data.firstName)
+        value?.setMeuNome(respostaRequestLogin.data.firstName)
         console.log(value.baererToken);
 
         setIsLoading(false);
@@ -83,7 +105,7 @@ function Login() {
         console.log(erroRequestLogin);
         alert("Usuário ou senha incorreto");
         setIsLoading(false);
-      });
+      }); */
  
 
   };
@@ -156,6 +178,8 @@ function Login() {
       </Head>
 
 <Grid container component="main" sx={{ height: '100vh' }}>
+
+
         <CssBaseline />
         <Grid
           item
@@ -172,6 +196,7 @@ function Login() {
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+
           <Box
             sx={{
               my: 8,
@@ -187,6 +212,9 @@ function Login() {
             <Typography component="h1" variant="h5">
               Entrar
             </Typography>
+
+
+            
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               {isLoading ? "Carregando..." : ''}
               <TextField
@@ -194,7 +222,8 @@ function Login() {
                 required
                 fullWidth
                 id="email"
-                label="Nome de usuário"
+                type='email'
+                label="email de usuário"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -245,50 +274,7 @@ function Login() {
       </Grid>
 
 
-
-
-
-{/*       <div className="login-container">
-
-
-{isLoading ? "Carregando..." : ''}
-
-      <form onSubmit={handleSubmit}>
-        <TextField
-          id="email"
-          label="Email"
-          type="email"
-          variant="outlined"
-          margin="normal"
-          value={email}
-          onChange={handleEmailChange}
-          required
-          fullWidth
-        />
-        <TextField
-          id="password"
-          label="Senha"
-          type="password"
-          variant="outlined"
-          margin="normal"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-          fullWidth
-        />
-        <Button variant="contained" color="primary" type="submit" fullWidth>
-          Entrar
-        </Button>
-        </form>
-
-      <div>
-        <Link href="#">Esqueci minha senha</Link>
-      </div>
-      <div>
-        Não tem uma conta? <Link href="#">Cadastre-se</Link>
-      </div> 
  
-      </div>  */}
 
 
     </>

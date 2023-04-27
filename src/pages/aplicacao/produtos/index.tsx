@@ -141,7 +141,7 @@ const Produtos = () => {
           listaProdutos.map((item, index) => (
             <Card
               key={item.id}
-              sx={{ width: 300, maxWidth: 745, cursor: `pointer` }}
+              sx={{ width: 300, maxWidth: 745, cursor: `pointer`, marginTop: 2 }}
               onClick={() => router.push(`/aplicacao/produtos/${item.id}`)}
             >
               <CardMedia

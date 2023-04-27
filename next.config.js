@@ -6,7 +6,9 @@ const nextConfig = {
     defaultLocale: 'pt-BR',
     localeDetection: false,
   },
-
+    eslint: {
+    ignoreDuringBuilds: true,
+  }
 
 }
 

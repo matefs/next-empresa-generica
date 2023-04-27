@@ -20,7 +20,7 @@ export default function Index( ) {
     <>
       <Header /> 
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:500 }}>
-      <Typography sx={{color: 'grey'}}>Acesse o menu acima para ver mais opções.</Typography>
+      <Typography sx={{color: 'grey'}}>Acesse o menu à esquerda para ver mais opções.</Typography>
     </Box>
 
     </>

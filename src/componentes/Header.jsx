@@ -144,8 +144,7 @@ export default function SearchAppBar({ onChildEvent }) {
             Sistema
           </Typography>
 
-{console.log(router.route)}
-
+ 
    <Tooltip title="Aperte a tecla enter para pesquisar">
           <Search >
             <SearchIconWrapper>

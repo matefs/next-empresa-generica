@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import ContextoDaAplicacao from "../../../ContextoDaAplicacao.js";
 import { useRouter } from 'next/router'
 import Header from "../../componentes/Header"
+import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
 
 
 export default function Index( ) {
@@ -17,7 +19,9 @@ export default function Index( ) {
   return (
     <>
       <Header /> 
-    
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height:500 }}>
+      <Typography sx={{color: 'grey'}}>Acesse o menu acima para ver mais opções.</Typography>
+    </Box>
 
     </>
   );

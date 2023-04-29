@@ -3,6 +3,19 @@ import axios from 'axios'
 import {CircularProgress, Box, Typography, Avatar, Card, CardContent} from "@mui/material";
 import Header from '../../../componentes/Header';
 
+type UsuarioCarregado = {
+id: number;
+cidade: string;
+senha: string;
+confirmarSenha: string;
+cpf: number;
+dataDeNascimento: string;
+email: string;
+estado: string;
+nome: string;
+sexo: string;
+}
+
 
 export default function Index(){
     const [ carregandoBooleano, setCarregandoBooleano ] = useState(true)
@@ -11,6 +24,7 @@ export default function Index(){
     function carregarVariosUsuarios(){
         axios.get('https://generic-api-backend.mateusschverz.repl.co/usuarios?_limit=20&_sort=id&_order=desc')
         .then(resposta => {
+          console.log(resposta.data)
             Object.keys(resposta.data).length > 1 ? (function(){
                 setListaUsuarios(resposta.data)
                 setCarregandoBooleano(false)
@@ -81,7 +95,7 @@ export default function Index(){
                       position: "fixed",
                     }}
                     />
-                    : listaUsuarios.map((usuario) => {
+                    : listaUsuarios.map((usuario: UsuarioCarregado) => {
                         return(
                             <Card
                                 key={usuario.id}

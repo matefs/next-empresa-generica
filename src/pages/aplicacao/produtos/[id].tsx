@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { TextField, Box, Alert } from '@mui/material'
 
-import { Produto } from '../types/types'
+import { Produto } from '../../../types/types'
 
 
 function ProdutoIndividualComponente() { 
@@ -56,7 +56,7 @@ function chamarAlerta(texto:string, tipo: any) {
 
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const { nome, preco, quantidade, imagem  } = formData;
 

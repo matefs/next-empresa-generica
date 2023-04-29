@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { useContext } from "react";
 import ContextoDaAplicacao from "../../ContextoDaAplicacao.js";
-import {Grid, Box, Paper, Link, Checkbox, FormControlLabel, TextField, CssBaseline, Button, Avatar, Alert } from '@mui/material';
+import {Grid, Box, Paper, Link, Checkbox, FormControlLabel, TextField, CssBaseline, Button, Avatar, Alert, AlertColor } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -23,16 +23,24 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [usuarioFoiEncontrado, setUsuarioFoiEncontrado ] = useState(false);
-  const [existeAlerta, setExisteAlerta] = useState({
+
+  interface Alerta  {
+    ativo: boolean;
+    texto: string;
+    tipo: AlertColor;
+  }
+
+
+  const [existeAlerta, setExisteAlerta] = useState<Alerta>({
     ativo: false,
     texto: '',
-    tipo: ''
+    tipo: 'error'
   });
 
   const router = useRouter()
 
   
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     var credenciais = {
@@ -66,7 +74,7 @@ function Login() {
         setExisteAlerta({
           ativo: true,
           texto: 'Credenciais incorretas, tente novamente ou registre-se.',
-          tipo: 'error'
+          tipo: 'error' as AlertColor
         })
 
         setIsLoading(false)
@@ -80,11 +88,11 @@ function Login() {
 
   const value = useContext(ContextoDaAplicacao);
 
-  const handleEmailChange = (event) => {
+  const handleEmailChange = (event: any) => {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event: any) => {
     setPassword(event.target.value);
   };
 
@@ -92,6 +100,7 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
+   
  
   return (
     <>
@@ -165,7 +174,7 @@ function Login() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Lembrar-me"
               />
-  {existeAlerta.ativo == true ?  
+  {existeAlerta.ativo == true && existeAlerta.tipo !== undefined ?  
   <Alert 
   severity={existeAlerta.tipo}
   onClick={() => setExisteAlerta({...existeAlerta, ativo: false})}

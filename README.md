@@ -4,7 +4,8 @@ Este é um projeto de exemplo de uma empresa genérica, construído utilizando N
 
 ![image](https://user-images.githubusercontent.com/30128774/235314471-623c8456-b456-490c-b5ff-9effc5bf3f02.png)
 
-#### Acesse o projeto online https://animated-torte-64e3f1.netlify.app/
+#### Acesse o projeto online por meio do seguinte link: https://animated-torte-64e3f1.netlify.app/
+ 
 
 ## **Tecnologias utilizadas**
 

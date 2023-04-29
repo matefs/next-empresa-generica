@@ -41,7 +41,7 @@ function ProdutoIndividualComponente() {
 
 
 
-function chamarAlerta(texto:string, tipo: string) {
+function chamarAlerta(texto:string, tipo: any) {
     
     return (
       <Alert

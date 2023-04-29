@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import AddIcon from '@mui/icons-material/Add';
-import { Produto } from "../types/types";
+import { Produto } from "../../../types/types";
 import FormularioCadastro from "./componentes/FormularioCadastro";
 
 const Produtos = () => {

@@ -2,6 +2,10 @@
 
 Este é um projeto de exemplo de uma empresa genérica, construído utilizando Next.js e algumas bibliotecas complementares. O objetivo deste projeto é fornecer um ponto de partida para projetos web utilizando Next.js.
 
+![image](https://user-images.githubusercontent.com/30128774/235314471-623c8456-b456-490c-b5ff-9effc5bf3f02.png)
+
+- Acesse o projeto [aqui](https://animated-torte-64e3f1.netlify.app/)
+
 ## **Tecnologias utilizadas**
 
 - **[Next.js](https://nextjs.org/)**

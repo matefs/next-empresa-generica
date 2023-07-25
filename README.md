@@ -10,6 +10,7 @@ Este é um projeto de exemplo de uma empresa genérica, construído utilizando N
   - Senha: 123
 #### Explicação sobre o projeto: https://youtu.be/VWs_ljYefAA
 
+
 ## **Tecnologias utilizadas**
 
 - **[Next.js](https://nextjs.org/)**

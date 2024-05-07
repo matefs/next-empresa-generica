@@ -61,7 +61,7 @@ function chamarAlerta(texto:string, tipo: any) {
     const { nome, preco, quantidade, imagem  } = formData;
 
     nome.length >= 1 && preco >= 1 && quantidade >= 1 && imagem.includes('http') ?
-     axios.put(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`, formData , {
+     axios.put(`https://hazel-snowy-building.glitch.me/produtos/${id}`, formData , {
         headers: {
         'Content-Type': 'application/json'
         }
@@ -90,7 +90,7 @@ function chamarAlerta(texto:string, tipo: any) {
     var confirmacao = confirm('Tem certeza que deseja deletar o produto ? ')
 
     confirmacao == true ? 
-    axios.delete(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
+    axios.delete(`https://hazel-snowy-building.glitch.me/produtos/${id}`)
     .then((resposta) => {
       alert('Produto deletado com sucesso')
       router.push('/aplicacao/produtos')
@@ -102,7 +102,7 @@ function chamarAlerta(texto:string, tipo: any) {
 
 
   function trazProdutoIndividual(){
-     id != undefined ?  axios.get(`https://generic-api-backend.mateusschverz.repl.co/produtos/${id}`)
+     id != undefined ?  axios.get(`https://hazel-snowy-building.glitch.me/produtos/${id}`)
      .then( (respostaItem) =>  {
       setProdutoIndividual(respostaItem.data)
       setIsLoading(false)

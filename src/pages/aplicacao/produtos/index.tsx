@@ -21,7 +21,7 @@ const Produtos = () => {
   function trazTodosProdutos() {
     axios
       .get(
-        "https://generic-api-backend.mateusschverz.repl.co/produtos?_limit=20&_sort=id&_order=desc"
+        "https://hazel-snowy-building.glitch.me/produtos?_limit=20&_sort=id&_order=desc"
       )
       .then((respostaRequisicao) => setListaProdutos(respostaRequisicao.data))
       .catch((erro) => {
@@ -47,7 +47,7 @@ const Produtos = () => {
     valorCampoPesquisa != undefined && valorCampoPesquisa.toString().length >= 1
       ? axios
           .get(
-            `https://generic-api-backend.mateusschverz.repl.co/produtos?nome_like=${valorCampoPesquisa}`
+            `https://hazel-snowy-building.glitch.me/produtos?nome_like=${valorCampoPesquisa}`
           )
           .then((respostaRequisicao) => {
             respostaRequisicao.data.length > 0

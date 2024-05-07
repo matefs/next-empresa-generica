@@ -22,7 +22,7 @@ export default function Index(){
     const [ listaUsuarios, setListaUsuarios ] = useState([])
 
     function carregarVariosUsuarios(){
-        axios.get('https://generic-api-backend.mateusschverz.repl.co/usuarios?_limit=20&_sort=id&_order=desc')
+        axios.get('https://hazel-snowy-building.glitch.me/usuarios?_limit=20&_sort=id&_order=desc')
         .then(resposta => {
           console.log(resposta.data)
             Object.keys(resposta.data).length > 1 ? (function(){
@@ -37,7 +37,7 @@ export default function Index(){
     valorCampoPesquisa != undefined && valorCampoPesquisa.toString().length >= 1
       ? axios
           .get(
-            `https://generic-api-backend.mateusschverz.repl.co/usuarios?q=${valorCampoPesquisa}`
+            `https://hazel-snowy-building.glitch.me/usuarios?q=${valorCampoPesquisa}`
           )
           .then((respostaRequisicao) => {
             respostaRequisicao.data.length > 0
